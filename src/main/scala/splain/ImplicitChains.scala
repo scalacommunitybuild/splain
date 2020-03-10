@@ -93,7 +93,8 @@ with ImplicitsCompat
         else if (result.tree.symbol.isModule) result.tree.symbol.moduleClass
         else result.tree.symbol
       if (context.owner.hasTransOwner(s))
-        context.warning(result.tree.pos, s"Implicit resolves to enclosing ${result.tree.symbol}")
+        context.warning(result.tree.pos, s"Implicit resolves to enclosing ${result.tree.symbol}",
+          Reporting.WarningCategory.Other)
     }
     emitResult(implicitSearchContext)(result)
   }
