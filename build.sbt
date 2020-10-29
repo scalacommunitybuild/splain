@@ -26,6 +26,8 @@ addSourceDir {
   case (2, 13, _) => "2.13"
 }
 addSourceDir {
+  case (2, 12, patch) if patch >= 13 => "2.12.13+"
+  case (2, 12, patch) => "2.12.12-"
   case (2, 13, patch) if patch >= 2 => "2.13.2+"
   case _ => "2.13.1-"
 }
