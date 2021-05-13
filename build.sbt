@@ -78,3 +78,15 @@ releaseProcess := Seq[ReleaseStep](
   setNextVersion,
   commitNextVersion
 )
+
+resolvers     += "scala-integration" at "https://scala-ci.typesafe.com/artifactory/scala-integration/"
+scalaVersion  := "2.12.14-bin-fd00775"
+scalaInstance := {
+  val si = (LocalRootProject / scalaInstance).value
+  new sbt.internal.inc.ScalaInstance(
+    scalaVersion.value,
+    si.loader, si.loaderLibraryOnly,
+    si.libraryJars, si.compilerJar, si.allJars,
+    si.explicitActual
+  )
+}
